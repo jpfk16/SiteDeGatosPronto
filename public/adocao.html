@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adoções</title>
+
+    <link rel="stylesheet" href="adocoes.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script src="js/adocao.js" defer></script>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <a href="index.html"><img src="img/logo.jpg" alt="Logo"></a>
+    </div>
+
+    <nav>
+
+        <a href="index.html">HOME</a>
+        <a href="adocao.html">ADOÇÕES</a>
+        <a href="admin.html">ADMIN</a>
+        <a href="contato.html">CONTATO</a>
+
+    </nav>
+
+</header>
+
+
+<section class="banner">
+
+    <img src="img/banner-gato.jpg">
+
+</section>
+
+
+<section class="animais">
+
+    <div class="cards-container">
+
+        <!-- Cards serão inseridos pela API -->
+
+    </div>
+
+</section>
+
+
+<section class="animais">
+
+    <div class="cards-container">
+
+        <!-- Segunda lista da API -->
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="modal-overlay" class="modal-overlay">
+    <div class="modal-box">
+        <button class="modal-fechar" id="modal-fechar">&times;</button>
+        <img id="modal-img" src="" alt="">
+        <div class="modal-info">
+            <h2 id="modal-nome"></h2>
+            <p id="modal-descricao"></p>
+            <a href="contato.html" class="modal-btn-adotar">Quero adotar!</a>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

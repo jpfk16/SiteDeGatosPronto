@@ -1,0 +1,219 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#efefef;
+}
+
+/* HEADER */
+
+header{
+
+    width:100%;
+    height:90px;
+    background:#74bea7;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+}
+
+.logo img{
+
+    height:70px;
+
+}
+
+nav{
+
+    display:flex;
+    gap:70px;
+
+}
+
+nav a{
+
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#2b2b2b;
+
+}
+
+.banner{
+
+    position:relative;
+    height:700px;
+    overflow:hidden;
+
+}
+
+.bg{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:.35;
+
+}
+
+.caixa{
+
+    position:absolute;
+    top:100px;
+    left:180px;
+    width:650px;
+    height:280px;
+    background:#78c5ac;
+    display:flex;
+
+}
+
+.texto{
+
+    width:50%;
+    padding:35px;
+    color:white;
+
+}
+
+.texto h2{
+
+    margin-bottom:20px;
+
+}
+
+.texto p{
+
+    line-height:24px;
+    font-size:14px;
+
+}
+
+button{
+
+    margin-top:25px;
+    border:none;
+    background:white;
+    padding:12px 28px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#202020;
+    color:white;
+
+}
+
+.gato{
+
+    width:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.gato img{
+
+    width:250px;
+
+}
+
+.ajuda{
+
+    position:relative;
+    height:500px;
+
+}
+
+.bg2{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+.box-ajuda{
+
+    position:absolute;
+
+    top:120px;
+    right:180px;
+    background:#78c5ac;
+    color:white;
+    padding:35px 45px;
+    border-radius:8px;
+    text-align:center;
+
+}
+
+.sobre{
+
+    position:relative;
+    height:500px;
+
+}
+
+.bg3{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+.box-sobre{
+
+    position:absolute;
+    left:120px;
+    bottom:90px;
+    width:320px;
+    background:#78c5ac;
+    color:white;
+    padding:30px;
+    border-radius:8px;
+
+}
+
+.box-sobre h2{
+
+    margin-bottom:15px;
+
+}
+
+.box-sobre p{
+
+    font-size:14px;
+    line-height:24px;
+
+}
+
+footer{
+
+    height:80px;
+    background:#78c5ac;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:80px;
+    font-size:30px;
+
+}

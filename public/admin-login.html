@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Orfanato dos Gatos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        *{ box-sizing:border-box; margin:0; padding:0; }
+
+        body{
+            font-family:'Poppins',sans-serif;
+            background:#a8d8c8;
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .login-card{
+            background:white;
+            border-radius:20px;
+            padding:48px 40px;
+            width:380px;
+            box-shadow:0 10px 30px rgba(0,0,0,.12);
+            text-align:center;
+        }
+
+        .login-card img{
+            width:90px;
+            height:90px;
+            border-radius:50%;
+            object-fit:cover;
+            border:3px solid #76bea7;
+            margin-bottom:16px;
+        }
+
+        .login-card h1{
+            font-size:20px;
+            font-weight:700;
+            color:#2b2b2b;
+            margin-bottom:6px;
+        }
+
+        .login-card p{
+            font-size:13px;
+            color:#888;
+            margin-bottom:28px;
+        }
+
+        .campo{
+            position:relative;
+            margin-bottom:16px;
+            text-align:left;
+        }
+
+        .campo i{
+            position:absolute;
+            left:14px;
+            top:50%;
+            transform:translateY(-50%);
+            color:#aaa;
+            font-size:14px;
+        }
+
+        .campo input{
+            width:100%;
+            padding:12px 14px 12px 40px;
+            border:1.5px solid #ddd;
+            border-radius:8px;
+            font-family:'Poppins',sans-serif;
+            font-size:14px;
+            outline:none;
+            transition:.2s;
+        }
+
+        .campo input:focus{
+            border-color:#76bea7;
+        }
+
+        .btn-login{
+            width:100%;
+            padding:13px;
+            background:#76bea7;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-family:'Poppins',sans-serif;
+            font-size:15px;
+            font-weight:600;
+            cursor:pointer;
+            transition:.2s;
+            margin-top:6px;
+        }
+
+        .btn-login:hover{
+            background:#5fa18d;
+        }
+
+        #erro-login{
+            margin-top:14px;
+            font-size:13px;
+            color:#e74c3c;
+            min-height:18px;
+        }
+
+        .btn-voltar{
+            display:block;
+            margin-top:18px;
+            font-size:13px;
+            color:#888;
+            text-decoration:none;
+            transition:.2s;
+        }
+
+        .btn-voltar:hover{
+            color:#76bea7;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="login-card">
+
+    <img src="img/logo.jpg" alt="Logo">
+    <h1>Área Administrativa</h1>
+    <p>Faça login para acessar o painel</p>
+
+    <div class="campo">
+        <i class="fas fa-user"></i>
+        <input type="text" id="usuario" placeholder="Usuário">
+    </div>
+
+    <div class="campo">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="senha" placeholder="Senha">
+    </div>
+
+    <button class="btn-login" id="btn-login">Entrar</button>
+
+    <p id="erro-login"></p>
+
+    <a href="index.html" class="btn-voltar">← Voltar ao site</a>
+
+</div>
+
+<script>
+
+    // Se já está logado, vai direto pro admin
+    if (localStorage.getItem("admin_token")) {
+        window.location.href = "admin.html";
+    }
+
+    async function fazerLogin() {
+
+        const usuario = document.getElementById("usuario").value.trim();
+        const senha   = document.getElementById("senha").value;
+        const erro    = document.getElementById("erro-login");
+        const btn     = document.getElementById("btn-login");
+
+        if (!usuario || !senha) {
+            erro.textContent = "Preencha usuário e senha.";
+            return;
+        }
+
+        btn.textContent = "Entrando...";
+        btn.disabled = true;
+        erro.textContent = "";
+
+        try {
+
+            const resposta = await fetch("/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ usuario, senha })
+            });
+
+            const dados = await resposta.json();
+
+            if (!resposta.ok) throw new Error(dados.erro);
+
+            localStorage.setItem("admin_token", dados.token);
+            localStorage.setItem("admin_usuario", dados.usuario);
+
+            window.location.href = "admin.html";
+
+        } catch (err) {
+
+            erro.textContent = err.message || "Erro ao fazer login.";
+            btn.textContent = "Entrar";
+            btn.disabled = false;
+
+        }
+
+    }
+
+    document.getElementById("btn-login").addEventListener("click", fazerLogin);
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") fazerLogin();
+    });
+
+</script>
+
+</body>
+</html>

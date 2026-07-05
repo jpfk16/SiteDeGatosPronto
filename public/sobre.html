@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Orfanato dos Gatos</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        .sobre-hero{
+            background:#76bea7;
+            padding:50px 0 30px;
+            text-align:center;
+            color:white;
+        }
+
+        .sobre-hero h1{
+            font-size:36px;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+
+        .sobre-hero p{
+            font-size:15px;
+            opacity:.9;
+        }
+
+        /* ABAS */
+        .abas-nav{
+            display:flex;
+            justify-content:center;
+            gap:0;
+            background:#5fa18d;
+        }
+
+        .aba-btn{
+            background:none;
+            border:none;
+            color:rgba(255,255,255,.7);
+            font-family:'Poppins',sans-serif;
+            font-size:14px;
+            font-weight:600;
+            padding:16px 36px;
+            cursor:pointer;
+            border-bottom:3px solid transparent;
+            transition:.2s;
+            margin-top:0;
+            border-radius:0;
+        }
+
+        .aba-btn:hover{
+            color:white;
+            background:rgba(255,255,255,.1);
+        }
+
+        .aba-btn.ativo{
+            color:white;
+            border-bottom:3px solid white;
+            background:rgba(255,255,255,.15);
+        }
+
+        /* CONTEÚDO DAS ABAS */
+        .aba-conteudo{
+            display:none;
+            max-width:900px;
+            margin:50px auto;
+            padding:0 20px;
+        }
+
+        .aba-conteudo.ativo{
+            display:block;
+        }
+
+        /* ABA NOSSA HISTÓRIA */
+        .historia-bloco{
+            display:flex;
+            gap:40px;
+            align-items:center;
+            margin-bottom:50px;
+            background:white;
+            border-radius:16px;
+            padding:30px;
+            box-shadow:0 2px 12px rgba(0,0,0,.07);
+        }
+
+        .historia-bloco.invertido{
+            flex-direction:row-reverse;
+        }
+
+        .historia-bloco img{
+            width:280px;
+            height:200px;
+            object-fit:cover;
+            border-radius:12px;
+            flex-shrink:0;
+            background:#e9b1ad;
+        }
+
+        .historia-bloco .historia-texto h3{
+            font-size:18px;
+            font-weight:700;
+            color:#2b2b2b;
+            margin-bottom:10px;
+        }
+
+        .historia-bloco .historia-texto p{
+            font-size:14px;
+            color:#555;
+            line-height:1.7;
+        }
+
+        /* ABA GALERIA */
+        .galeria-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:16px;
+        }
+
+        .galeria-item{
+            position:relative;
+            border-radius:12px;
+            overflow:hidden;
+            aspect-ratio:1;
+            cursor:pointer;
+            background:#e9b1ad;
+        }
+
+        .galeria-item img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition:.3s;
+        }
+
+        .galeria-item:hover img{
+            transform:scale(1.06);
+        }
+
+        .galeria-label{
+            position:absolute;
+            bottom:0;
+            left:0;
+            right:0;
+            background:linear-gradient(transparent,rgba(0,0,0,.6));
+            color:white;
+            padding:20px 12px 10px;
+            font-size:13px;
+            font-weight:600;
+            opacity:0;
+            transition:.2s;
+        }
+
+        .galeria-item:hover .galeria-label{
+            opacity:1;
+        }
+
+        /* ABA EQUIPE */
+        .equipe-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:24px;
+        }
+
+        .membro{
+            background:white;
+            border-radius:16px;
+            padding:24px;
+            text-align:center;
+            box-shadow:0 2px 12px rgba(0,0,0,.07);
+        }
+
+        .membro img{
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            object-fit:cover;
+            background:#e9b1ad;
+            margin-bottom:14px;
+            border:3px solid #76bea7;
+        }
+
+        .membro h3{
+            font-size:15px;
+            font-weight:700;
+            color:#2b2b2b;
+            margin-bottom:4px;
+        }
+
+        .membro .cargo{
+            font-size:12px;
+            color:#76bea7;
+            font-weight:600;
+            margin-bottom:8px;
+        }
+
+        .membro p{
+            font-size:13px;
+            color:#666;
+            line-height:1.5;
+        }
+
+        /* PLACEHOLDER de imagem */
+        .img-placeholder{
+            width:280px;
+            height:200px;
+            background:#e9b1ad;
+            border-radius:12px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:white;
+            font-weight:600;
+            font-size:13px;
+            flex-shrink:0;
+        }
+
+        .img-placeholder-round{
+            width:100px;
+            height:100px;
+            background:#e9b1ad;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:white;
+            font-size:11px;
+            font-weight:600;
+            margin:0 auto 14px;
+            border:3px solid #76bea7;
+        }
+
+        .img-placeholder-galeria{
+            width:100%;
+            height:100%;
+            background:#e9b1ad;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:white;
+            font-weight:600;
+            font-size:13px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <a href="index.html">
+            <img src="img/logo.jpg" alt="Logo">
+        </a>
+    </div>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="sobre.html">SOBRE NÓS</a>
+        <a href="adocao.html">ADOÇÕES</a>
+        <a href="admin.html">ADMIN</a>
+        <a href="contato.html">CONTATO</a>
+    </nav>
+
+</header>
+
+<!-- Hero -->
+<div class="sobre-hero">
+    <h1>Sobre o Orfanato dos Gatos</h1>
+    <p>Conheça nossa história, nossa equipe e os momentos especiais que vivemos juntos.</p>
+</div>
+
+<!-- Abas -->
+<div class="abas-nav">
+    <button class="aba-btn ativo" data-aba="historia">Nossa História</button>
+    <button class="aba-btn" data-aba="galeria">Galeria</button>
+    <button class="aba-btn" data-aba="equipe">Equipe</button>
+</div>
+
+<!-- ABA: HISTÓRIA -->
+<div class="aba-conteudo ativo" id="aba-historia">
+
+    <div class="historia-bloco">
+        <div class="img-placeholder">Foto aqui</div>
+        <div class="historia-texto">
+            <h3>Como tudo começou</h3>
+            <p>Escreva aqui a história do Orfanato dos Gatos — como surgiu a ideia, quem fundou, quando começou e qual foi a motivação por trás deste projeto tão especial.</p>
+        </div>
+    </div>
+
+    <div class="historia-bloco invertido">
+        <div class="img-placeholder">Foto aqui</div>
+        <div class="historia-texto">
+            <h3>Nossa missão</h3>
+            <p>Descreva aqui a missão do orfanato — o que vocês buscam alcançar, os valores que guiam o trabalho e o impacto que já geraram na comunidade e na vida dos gatinhos.</p>
+        </div>
+    </div>
+
+    <div class="historia-bloco">
+        <div class="img-placeholder">Foto aqui</div>
+        <div class="historia-texto">
+            <h3>Onde estamos hoje</h3>
+            <p>Conte sobre o crescimento do orfanato — quantos gatos já foram adotados, quantos voluntários participam, quais conquistas alcançaram e os próximos passos.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ABA: GALERIA -->
+<div class="aba-conteudo" id="aba-galeria">
+
+    <div class="galeria-grid">
+
+        <div class="galeria-item">
+            <div class="img-placeholder-galeria">Foto 1</div>
+            <div class="galeria-label">Legenda da foto</div>
+        </div>
+
+        <div class="galeria-item">
+            <div class="img-placeholder-galeria">Foto 2</div>
+            <div class="galeria-label">Legenda da foto</div>
+        </div>
+
+        <div class="galeria-item">
+            <div class="img-placeholder-galeria">Foto 3</div>
+            <div class="galeria-label">Legenda da foto</div>
+        </div>
+
+        <div class="galeria-item">
+            <div class="img-placeholder-galeria">Foto 4</div>
+            <div class="galeria-label">Legenda da foto</div>
+        </div>
+
+        <div class="galeria-item">
+            <div class="img-placeholder-galeria">Foto 5</div>
+            <div class="galeria-label">Legenda da foto</div>
+        </div>
+
+        <div class="galeria-item">
+            <div class="img-placeholder-galeria">Foto 6</div>
+            <div class="galeria-label">Legenda da foto</div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ABA: EQUIPE -->
+<div class="aba-conteudo" id="aba-equipe">
+
+    <div class="equipe-grid">
+
+        <div class="membro">
+            <div class="img-placeholder-round">Foto</div>
+            <h3>Nome da pessoa</h3>
+            <p class="cargo">Fundadora</p>
+            <p>Breve descrição sobre essa pessoa e sua contribuição para o orfanato.</p>
+        </div>
+
+        <div class="membro">
+            <div class="img-placeholder-round">Foto</div>
+            <h3>Nome da pessoa</h3>
+            <p class="cargo">Voluntária</p>
+            <p>Breve descrição sobre essa pessoa e sua contribuição para o orfanato.</p>
+        </div>
+
+        <div class="membro">
+            <div class="img-placeholder-round">Foto</div>
+            <h3>Nome da pessoa</h3>
+            <p class="cargo">Voluntária</p>
+            <p>Breve descrição sobre essa pessoa e sua contribuição para o orfanato.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const botoesAba = document.querySelectorAll(".aba-btn");
+    const conteudos = document.querySelectorAll(".aba-conteudo");
+
+    botoesAba.forEach(btn => {
+        btn.addEventListener("click", () => {
+            botoesAba.forEach(b => b.classList.remove("ativo"));
+            conteudos.forEach(c => c.classList.remove("ativo"));
+            btn.classList.add("ativo");
+            document.getElementById("aba-" + btn.dataset.aba).classList.add("ativo");
+        });
+    });
+</script>
+
+</body>
+</html>
